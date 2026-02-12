@@ -35,7 +35,7 @@ background:white;
 color:#d6336c;
 font-weight:600;
 cursor:pointer;
-margin-top:12px;
+margin:8px;
 }
 
 input{
@@ -44,10 +44,8 @@ border-radius:25px;
 border:none;
 }
 
-/* steps */
 .step{display:none;padding:20px;}
 
-/* gallery */
 .gallery{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -56,7 +54,6 @@ gap:16px;
 .photo{border-radius:14px;overflow:hidden;cursor:pointer;background:white;}
 .photo img{width:100%;height:220px;object-fit:cover;}
 
-/* popup */
 #popup{
 position:fixed;inset:0;background:rgba(0,0,0,.6);
 display:none;justify-content:center;align-items:center;
@@ -65,21 +62,14 @@ display:none;justify-content:center;align-items:center;
 background:white;color:#333;padding:20px;border-radius:16px;max-width:420px;
 }
 
-/* hearts */
 .heart{position:fixed;top:-10px;animation:fall linear forwards;}
 @keyframes fall{to{transform:translateY(110vh);opacity:0;}}
 
-/* confetti */
 .confetti{position:fixed;width:8px;height:8px;top:-10px;animation:confall linear forwards;}
 @keyframes confall{to{transform:translateY(110vh) rotate(720deg);opacity:0;}}
 
-/* flash */
 .flash{position:fixed;inset:0;background:white;opacity:0;animation:flashAnim .6s;}
 @keyframes flashAnim{0%{opacity:.9;}100%{opacity:0;}}
-
-/* sparkle */
-.spark{position:fixed;animation:sparkUp 1s forwards;}
-@keyframes sparkUp{to{transform:translateY(-40px);opacity:0;}}
 </style>
 </head>
 
@@ -89,11 +79,11 @@ background:white;color:#333;padding:20px;border-radius:16px;max-width:420px;
 <source src="Rang-Jo-Lagyo-Atif-Aslam-Hindi-1.mp3">
 </audio>
 
-<!-- LOCK SCREEN -->
+<!-- LOCK -->
 <div id="lock" style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;">
 <h1>Brewed With Love For You ☕❤️</h1>
-<p>Password dalo Gentleman 😌</p>
-<input type="password" id="pw" placeholder="Type with love">
+<p>Enter password, Gentleman 😌</p>
+<input type="password" id="pw">
 <button onclick="unlock()">Unlock</button>
 <p id="err"></p>
 </div>
@@ -101,53 +91,88 @@ background:white;color:#333;padding:20px;border-radius:16px;max-width:420px;
 <!-- MAIN -->
 <div id="main" style="display:none;">
 
+<!-- STEP 1 -->
 <div class="step" id="s1">
-<h1>Brewed With Love For You ☕❤️</h1>
+<h1>Welcome My Gentleman ☕❤️</h1>
 <div class="card">
-Yeh cute sa coffee-flavoured love corner  
-sirf mere Gentleman ke liye ☕💞
+This is a tiny soft corner made with warmth, smiles,  
+and a little extra coffee love — just for you.
 </div>
-<button onclick="next(2)">Next</button>
+<button onclick="next(2)">Open Next</button>
 </div>
 
+<!-- STEP 2 MESSAGE -->
 <div class="step" id="s2">
-<h1>Little Note 💌</h1>
+<h1>A Little Note 💌</h1>
 <div class="card">
-Some people feel like a message,  
-some feel like a memory —  
-but you feel like comfort.  
+You feel like comfort, not noise.  
+Like calm, not chaos.  
+Like that perfect sip of coffee after a long day.  
 
-Tum wo ho jinke saath silence bhi conversation lagta hai,  
-aur coffee bhi extra sweet ho jaati hai.  
-
-If love had a simple name —  
-it would be you, my Gentleman ☕❤️
+Being around you feels easy, safe, and quietly special —  
+and that is rare.
 </div>
 <button onclick="next(3)">Memories 📸</button>
 </div>
 
+<!-- STEP 3 GALLERY -->
 <div class="step" id="s3">
-<h1>Our Photo Stories 📸</h1>
+<h1>Photo Stories 📸</h1>
 <div class="gallery">
-<div class="photo" onclick="story('Yaha apni story likhna — memory 1')"><img src="photo1.jpg"></div>
-<div class="photo" onclick="story('Yaha apni story likhna — memory 2')"><img src="photo2.jpg"></div>
-<div class="photo" onclick="story('Yaha apni story likhna — memory 3')"><img src="photo3.jpg"></div>
-<div class="photo" onclick="story('Yaha apni story likhna — memory 4')"><img src="photo4.jpg"></div>
+<div class="photo" onclick="story('Write your story here — memory 1')"><img src="photo1.jpg"></div>
+<div class="photo" onclick="story('Write your story here — memory 2')"><img src="photo2.jpg"></div>
+<div class="photo" onclick="story('Write your story here — memory 3')"><img src="photo3.jpg"></div>
+<div class="photo" onclick="story('Write your story here — memory 4')"><img src="photo4.jpg"></div>
 </div>
-<button onclick="next(4)">Romantic Q&A 💘</button>
+<button onclick="next(4)">Fun Questions 💘</button>
 </div>
 
+<!-- STEP 4 QUESTIONS WITH OPTIONS -->
 <div class="step" id="s4">
-<h1>Cute Q&A</h1>
-<div class="card" id="qbox">Ready?</div>
-<button onclick="nextQ()">Next</button>
+<h1>Choose Your Answers 😉</h1>
+
+<div class="card">
+<p>Who deserves unlimited coffee dates with me?</p>
+<button onclick="ans()">Gentleman 😌</button>
+<button onclick="ans()">Obviously Gentleman ☕</button>
 </div>
 
-<div class="step" id="s5">
-<h1>Final Line ❤️</h1>
 <div class="card">
-My favorite combo forever:  
-Gentleman + Me + Coffee + Love ☕💞
+<p>Who looks calm but is secretly adorable?</p>
+<button onclick="ans()">Gentleman</button>
+<button onclick="ans()">Still Gentleman</button>
+</div>
+
+<!-- YOU CAN ADD MORE QUESTIONS LIKE THIS -->
+<!-- copy this block and edit -->
+<!--
+<div class="card">
+<p>Your custom question?</p>
+<button onclick="ans()">Option A</button>
+<button onclick="ans()">Option B</button>
+</div>
+-->
+
+<button onclick="next(5)">Final Message ❤️</button>
+</div>
+
+<!-- STEP 5 FINAL -->
+<div class="step" id="s5">
+<h1>For My Gentleman ❤️</h1>
+<div class="card">
+I don’t just like you — I admire you.  
+Your way of handling things, your calm strength,  
+your quiet charm — it honestly makes me proud.
+
+You are attractive without trying, caring without showing off,  
+and special without announcing it.  
+Dangerous combination, by the way. 😉
+
+If confidence had a soft side and charm had a heartbeat —  
+it would look a lot like you.
+
+Stay exactly like this —  
+because someone here is smiling a little extra because of you. ☕💘
 </div>
 </div>
 
@@ -159,59 +184,50 @@ Gentleman + Me + Coffee + Love ☕💞
 </div>
 
 <script>
-/* PASSWORD SYSTEM */
+/* PASSWORD */
 const correctPassword="i coffee you";
 const flirty=[
-"Wrong… but still cute 😌",
-"Password nahi, dil sahi lagao ☕",
-"Galat code, sahi Gentleman 💞",
-"Try again coffee partner 😉",
-"Close… add more pyaar",
-"Aise nahi khulega heart 😄",
-"Romantic try karo",
-"Almost… thoda aur"
+"Wrong… but still charming 😌",
+"Nope — but you’re cute trying ☕",
+"Not yet, Gentleman 😉",
+"Closer… add more love",
+"Coffee first, password next 😄",
+"Romantic try required",
+"Almost there",
+"Try once more"
 ];
 let attempts=0;
 
 function unlock(){
-let val=pw.value.trim().toLowerCase();
-if(val===correctPassword){
+let v=pw.value.trim().toLowerCase();
+if(v===correctPassword){
 lock.style.display="none";
 main.style.display="block";
 music.play();
-flash();
-confettiBurst();
-hearts();
+flash(); confettiBurst(); hearts();
 next(1);
 return;
 }
 attempts++;
 err.innerText = attempts<=flirty.length ? flirty[attempts-1]
-: "Hint 💡 It sounds like I Love You but coffee version ☕";
+: "Hint 💡 sounds like I Love You — but coffee version ☕";
 }
 
-/* STEPS */
+/* NAV */
 function next(n){
 document.querySelectorAll(".step").forEach(s=>s.style.display="none");
 document.getElementById("s"+n).style.display="block";
 }
 
-/* QNA */
-const qs=[
-"Best coffee partner? — Gentleman ☕",
-"Favorite person? — Gentleman ❤️",
-"Permanent smile reason? — Gentleman 😌"
-];
-let qi=0;
-function nextQ(){
-if(qi<qs.length) qbox.innerText=qs[qi++];
-else next(5);
-}
-
-/* STORY POPUP */
+/* STORY */
 function story(t){
 popup.style.display="flex";
 popupText.innerText=t;
+}
+
+/* ANSWER CLICK */
+function ans(){
+alert("Correct choice, Gentleman 😌");
 }
 
 /* HEART SHOWER */
@@ -249,21 +265,6 @@ f.className="flash";
 document.body.appendChild(f);
 setTimeout(()=>f.remove(),600);
 }
-
-/* BUTTON SPARKLE */
-document.addEventListener("click",e=>{
-if(e.target.tagName==="BUTTON"){
-for(let i=0;i<6;i++){
-let s=document.createElement("div");
-s.className="spark";
-s.innerHTML="💖";
-s.style.left=e.clientX+"px";
-s.style.top=e.clientY+"px";
-document.body.appendChild(s);
-setTimeout(()=>s.remove(),1000);
-}
-}
-});
 </script>
 
 </body>
