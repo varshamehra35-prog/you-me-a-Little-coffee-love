@@ -70,6 +70,9 @@ background:white;color:#333;padding:20px;border-radius:16px;max-width:420px;
 
 .flash{position:fixed;inset:0;background:white;opacity:0;animation:flashAnim .6s;}
 @keyframes flashAnim{0%{opacity:.9;}100%{opacity:0;}}
+
+.spark{position:fixed;animation:sparkUp 1s forwards;}
+@keyframes sparkUp{to{transform:translateY(-40px);opacity:0;}}
 </style>
 </head>
 
@@ -91,88 +94,92 @@ background:white;color:#333;padding:20px;border-radius:16px;max-width:420px;
 <!-- MAIN -->
 <div id="main" style="display:none;">
 
-<!-- STEP 1 -->
 <div class="step" id="s1">
-<h1>Welcome My Gentleman ☕❤️</h1>
+<h1>Welcome, Gentleman ☕❤️</h1>
 <div class="card">
-This is a tiny soft corner made with warmth, smiles,  
-and a little extra coffee love — just for you.
+This little page is brewed with warmth, smiles,  
+and soft feelings — specially for you.
 </div>
 <button onclick="next(2)">Open Next</button>
 </div>
 
-<!-- STEP 2 MESSAGE -->
 <div class="step" id="s2">
 <h1>A Little Note 💌</h1>
 <div class="card">
-You feel like comfort, not noise.  
-Like calm, not chaos.  
-Like that perfect sip of coffee after a long day.  
+You feel like calm energy and quiet strength.  
+Like comfort without noise.  
+Like that perfect cup of coffee after a long day.  
 
-Being around you feels easy, safe, and quietly special —  
-and that is rare.
+Easy to admire. Hard to ignore.
 </div>
 <button onclick="next(3)">Memories 📸</button>
 </div>
 
-<!-- STEP 3 GALLERY -->
 <div class="step" id="s3">
 <h1>Photo Stories 📸</h1>
 <div class="gallery">
-<div class="photo" onclick="story('Write your story here — memory 1')"><img src="photo1.jpg"></div>
-<div class="photo" onclick="story('Write your story here — memory 2')"><img src="photo2.jpg"></div>
-<div class="photo" onclick="story('Write your story here — memory 3')"><img src="photo3.jpg"></div>
-<div class="photo" onclick="story('Write your story here — memory 4')"><img src="photo4.jpg"></div>
+<div class="photo" onclick="story('Write your story — memory 1')"><img src="photo1.jpg"></div>
+<div class="photo" onclick="story('Write your story — memory 2')"><img src="photo2.jpg"></div>
+<div class="photo" onclick="story('Write your story — memory 3')"><img src="photo3.jpg"></div>
+<div class="photo" onclick="story('Write your story — memory 4')"><img src="photo4.jpg"></div>
 </div>
-<button onclick="next(4)">Fun Questions 💘</button>
+<button onclick="next(4)">Questions 💘</button>
 </div>
 
-<!-- STEP 4 QUESTIONS WITH OPTIONS -->
+<!-- QUESTIONS -->
 <div class="step" id="s4">
-<h1>Choose Your Answers 😉</h1>
+<h1>Only Honest Answers 😉💘</h1>
 
 <div class="card">
-<p>Who deserves unlimited coffee dates with me?</p>
-<button onclick="ans()">Gentleman 😌</button>
-<button onclick="ans()">Obviously Gentleman ☕</button>
+<p>Will you be my Valentine? 🌹</p>
+<button onclick="ans('best')">Already yes ❤️</button>
+<button onclick="ans('best')">Come here</button>
 </div>
 
 <div class="card">
-<p>Who looks calm but is secretly adorable?</p>
-<button onclick="ans()">Gentleman</button>
-<button onclick="ans()">Still Gentleman</button>
+<p>Do you love me? ☕💞</p>
+<button onclick="ans('best')">More than coffee</button>
+<button onclick="ans('best')">Dangerously yes</button>
 </div>
 
-<!-- YOU CAN ADD MORE QUESTIONS LIKE THIS -->
-<!-- copy this block and edit -->
-<!--
 <div class="card">
-<p>Your custom question?</p>
-<button onclick="ans()">Option A</button>
-<button onclick="ans()">Option B</button>
+<p>Do you like me or LIKE like me? 😉</p>
+<button onclick="ans('best')">LIKE like you</button>
+<button onclick="ans('good')">Trying to be cool</button>
 </div>
--->
+
+<div class="card">
+<p>Are we a cute combo? 😌</p>
+<button onclick="ans('best')">Too cute</button>
+<button onclick="ans('best')">Certified combo</button>
+</div>
+
+<div class="card">
+<p>Coffee date soon? ☕</p>
+<button onclick="ans('best')">Non-negotiable</button>
+<button onclick="ans('best')">Book it</button>
+</div>
 
 <button onclick="next(5)">Final Message ❤️</button>
 </div>
 
-<!-- STEP 5 FINAL -->
+<!-- FINAL -->
 <div class="step" id="s5">
 <h1>For My Gentleman ❤️</h1>
 <div class="card">
-I don’t just like you — I admire you.  
-Your way of handling things, your calm strength,  
-your quiet charm — it honestly makes me proud.
+I don’t just like you — I genuinely admire you.  
+Your calm confidence, your way of handling things,  
+your presence — it’s quietly impressive.
 
-You are attractive without trying, caring without showing off,  
-and special without announcing it.  
-Dangerous combination, by the way. 😉
+You’re attractive without effort,  
+caring without showing off,  
+and special without trying to be.
 
-If confidence had a soft side and charm had a heartbeat —  
-it would look a lot like you.
+Honestly? That makes me a little proud.  
+And a little more into you than I should admit. 😉
 
 Stay exactly like this —  
-because someone here is smiling a little extra because of you. ☕💘
+someone here is smiling extra because of you. ☕💘
 </div>
 </div>
 
@@ -187,14 +194,14 @@ because someone here is smiling a little extra because of you. ☕💘
 /* PASSWORD */
 const correctPassword="i coffee you";
 const flirty=[
-"Wrong… but still charming 😌",
-"Nope — but you’re cute trying ☕",
-"Not yet, Gentleman 😉",
-"Closer… add more love",
-"Coffee first, password next 😄",
-"Romantic try required",
-"Almost there",
-"Try once more"
+"Wrong password… but still the right Gentleman 😌",
+"Nice try — kinda attractive though ☕",
+"Still locked… try with more love 💘",
+"If charm worked, you’d be inside already 😉",
+"My heart unlocked faster than this page 😄",
+"Try again — I’m enjoying this",
+"Add romance and retry ☕💞",
+"Almost… don’t make me unlock it myself 💘"
 ];
 let attempts=0;
 
@@ -210,7 +217,7 @@ return;
 }
 attempts++;
 err.innerText = attempts<=flirty.length ? flirty[attempts-1]
-: "Hint 💡 sounds like I Love You — but coffee version ☕";
+: "Hint 💡 Sounds like I Love You — coffee version ☕";
 }
 
 /* NAV */
@@ -225,9 +232,14 @@ popup.style.display="flex";
 popupText.innerText=t;
 }
 
-/* ANSWER CLICK */
-function ans(){
-alert("Correct choice, Gentleman 😌");
+/* ANSWERS */
+function ans(type){
+if(type==="best"){
+alert("That answer made me smile, Gentleman 💘");
+confettiBurst();
+}else{
+alert("Nice try… I know the better answer 😉");
+}
 }
 
 /* HEART SHOWER */
@@ -265,6 +277,21 @@ f.className="flash";
 document.body.appendChild(f);
 setTimeout(()=>f.remove(),600);
 }
+
+/* BUTTON SPARKLE */
+document.addEventListener("click",e=>{
+if(e.target.tagName==="BUTTON"){
+for(let i=0;i<6;i++){
+let s=document.createElement("div");
+s.className="spark";
+s.innerHTML="💖";
+s.style.left=e.clientX+"px";
+s.style.top=e.clientY+"px";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),1000);
+}
+}
+});
 </script>
 
 </body>
